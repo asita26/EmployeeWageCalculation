@@ -61,6 +61,36 @@ public class EmployeeWageCalculation1 {
         } 
  
     }
+    static void UC5() // Calculating wages for a month
+    {
+    	int dailyWagePerDay_FT=WAGE_PER_HOUR*FULL_DAY_HOURS;
+    	int dailyWagePerDay_PT=WAGE_PER_HOUR*PART_TIME_HOURS;
+    	int monthlyWageFullTime=0;
+    	int monthlyWagePartTime=0;
+
+    	for(int i=1; i<=20; i++)
+    	{
+    		int attendance=checkingAttendance();
+    // 		int dailywage=0;
+    		switch(attendance)
+    		{
+    			case FULL_TIME:
+                    monthlyWageFullTime = monthlyWageFullTime + dailyWagePerDay_FT ;
+                    break;
+                case PART_TIME:
+                    monthlyWagePartTime = monthlyWagePartTime + dailyWagePerDay_PT ;
+                    break;
+                default:
+                    // Employee is absent
+                    break;
+            }
+            //  System.out.println("Day " + i + ": Attendance - " + attendance +
+            //         ", Daily Wage - $" + dailyWage + ", Total Wage - $" + totalWage);
+    	}
+    	
+    	System.out.println("Monthly wages for a full-time employee - $" +monthlyWageFullTime);
+    	System.out.println("Monthly wages for a part-time employee - $" +monthlyWagePartTime);
+    }
 
 
 	public static void main(String[] args)
