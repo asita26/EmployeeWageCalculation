@@ -23,6 +23,25 @@ public class EmployeeWageCalculation1 {
         else System.out.println("Employee is Absent");
 
     }
+    static void UC2() // for FULL_TIME
+    {
+    	int empHours=0;
+    	int empWage=0;
+    	int empCheck=checkingAttendance();
+        
+        if(empCheck == FULL_TIME)
+        {
+          empHours=FULL_DAY_HOURS;
+          empWage=empHours*WAGE_PER_HOUR;
+          System.out.println("Daily wage for full-time employee - $"+empWage);
+        } 
+        
+        else 
+        {
+          System.out.println("Employee is absent.");
+        } 
+ 
+    }
 
 	public static void main(String[] args)
 	{
