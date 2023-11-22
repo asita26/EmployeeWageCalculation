@@ -42,6 +42,26 @@ public class EmployeeWageCalculation1 {
         } 
  
     }
+    static void UC3() // for PART_TIME
+    {
+    	int empHours=0;
+    	int empWage=0;
+    	double empCheck = Math.floor(Math.random()*10)%2;
+        
+        if(empCheck == PART_TIME)
+        {
+          empHours=PART_TIME_HOURS;
+          empWage=empHours*WAGE_PER_HOUR;
+          System.out.println("Daily wage for part-time employee - $"+empWage);
+        } 
+        
+        else 
+        {
+          System.out.println("Employee is absent.");
+        } 
+ 
+    }
+
 
 	public static void main(String[] args)
 	{
