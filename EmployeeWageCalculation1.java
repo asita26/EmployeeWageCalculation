@@ -2,6 +2,27 @@
 import java.util.*;
 
 public class EmployeeWageCalculation1 {
+	private static final int FULL_TIME = 1;
+    private static final int PART_TIME = 2;
+    private static final int WAGE_PER_HOUR = 20;
+    private static final int FULL_DAY_HOURS = 8;
+    private static final int PART_TIME_HOURS = 4;
+    private static final int WORKING_DAYS_IN_MONTH = 20;
+    private static final int MAX_WORKING_HOURS = 100;
+    private static final int MAX_WORKING_DAYS = 20;
+	static int checkingAttendance()
+    {
+    	  Random random = new Random();
+          return random.nextInt(3); // 0 for absent, 1 for full time, 2 for part time
+    }
+
+	static void UC1() 
+	{
+        int empCheck=checkingAttendance();
+        if(empCheck == FULL_TIME) System.out.println("Employee is Present");
+        else System.out.println("Employee is Absent");
+
+    }
 
 	public static void main(String[] args)
 	{
