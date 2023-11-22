@@ -91,6 +91,39 @@ public class EmployeeWageCalculation1 {
     	System.out.println("Monthly wages for a full-time employee - $" +monthlyWageFullTime);
     	System.out.println("Monthly wages for a part-time employee - $" +monthlyWagePartTime);
     }
+    static void UC6()
+    {
+    	int totalWorkingHours = 0;
+        int totalWorkingDays = 0;
+        int totalWage = 0;
+        
+        while (totalWorkingDays < MAX_WORKING_DAYS && totalWorkingHours < MAX_WORKING_HOURS) 
+        {
+            int attendance = checkingAttendance();
+            int dailyWage = 0;
+
+            switch (attendance) 
+            {
+                case FULL_TIME:
+                    dailyWage = FULL_DAY_HOURS*WAGE_PER_HOUR;
+                    break;
+                case PART_TIME:
+                    dailyWage = WAGE_PER_HOUR*PART_TIME_HOURS;
+                    break;
+                default:
+                    // Employee is absent
+                    break;
+           }
+
+            totalWorkingDays++;
+            totalWorkingHours += (attendance == FULL_TIME) ? FULL_DAY_HOURS : PART_TIME_HOURS;
+            totalWage += dailyWage;
+
+            System.out.println("Day " + totalWorkingDays + ": Attendance - " + attendance +
+                    ", Daily Wage - $" + dailyWage + ", Total Wage - $" + totalWage);
+        }
+    }
+    
 
 
 	public static void main(String[] args)
