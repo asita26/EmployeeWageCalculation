@@ -16,8 +16,6 @@ public class EmployeeWageCalculation1 {
           return random.nextInt(3); // 0 for absent, 1 for full time, 2 for part time
     }
 
-	
-
 	public static void main(String[] args)
 	{
         System.out.println("Welcome to Employee Wage Computation Program");
