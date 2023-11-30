@@ -1,6 +1,7 @@
 import java.util.Random;
-public class EmployeeWageCalculation1 {
 
+// Class to encapsulate company-specific information
+class CompanyEmpWage {
     private String companyName;
     private int wagePerHour;
     private int maxWorkingDays;
@@ -15,7 +16,7 @@ public class EmployeeWageCalculation1 {
         this.totalWage = 0;
     }
 
-    // Getters for company-specific information
+    // Getters and setters for company-specific information
     public String getCompanyName() {
         return companyName;
     }
@@ -43,7 +44,8 @@ public class EmployeeWageCalculation1 {
     }
 }
 
-public class EmpWageBuilder {
+// Class implementing the interface
+public class EmployeeWageCalculation1 {
 
     // Constants for employee attendance
     public static final int FULL_TIME = 1;
@@ -70,9 +72,9 @@ public class EmpWageBuilder {
             System.out.println("Cannot add more companies. Array full.");
         }
     }
-      // Method for checking attendance
-     public static int checkingAttendance()
-    {
+
+    // Method for checking attendance
+    public static int checkingAttendance() {
         Random random = new Random();
         return random.nextInt(3); // 0 for absent, 1 for full time, 2 for part time
     }
@@ -81,8 +83,6 @@ public class EmpWageBuilder {
     public int calculateDailyWage(int empHours, int wagePerHour) {
         return empHours * wagePerHour;
     }
-
-  
 
     // Method for calculating employee wage for all companies
     public void calculateEmployeeWage() {
@@ -131,4 +131,5 @@ public class EmpWageBuilder {
         empWageBuilder.calculateEmployeeWage();
     }
 }
+
 
