@@ -59,7 +59,7 @@ class CompanyEmpWage {
 }
 
 // Class implementing the interface
-public class EmployeeWageCalculation1 {
+public class EmpWageBuilder {
 
     // Constants for employee attendance
     public static final int FULL_TIME = 1;
@@ -126,6 +126,17 @@ public class EmployeeWageCalculation1 {
         }
     }
 
+    // Method to get total wage by company
+    public int getTotalWageByCompany(String companyName) {
+        for (CompanyEmpWage companyEmpWage : companyEmpWages) {
+            if (companyEmpWage.getCompanyName().equals(companyName)) {
+                return companyEmpWage.getTotalWage();
+            }
+        }
+        System.out.println("Company not found: " + companyName);
+        return 0;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program");
         EmpWageBuilder empWageBuilder = new EmpWageBuilder();
@@ -136,6 +147,11 @@ public class EmployeeWageCalculation1 {
 
         // Calculate and display wages for all companies
         empWageBuilder.calculateEmployeeWage();
+
+        // Query total wage for a specific company
+        String queryCompanyName = "CompanyA";
+        int totalWage = empWageBuilder.getTotalWageByCompany(queryCompanyName);
+        System.out.println("Total Wage for " + queryCompanyName + "= " + totalWage);
     }
 }
 
