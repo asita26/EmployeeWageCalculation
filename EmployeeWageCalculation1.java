@@ -9,6 +9,7 @@ class CompanyEmpWage {
     private int maxWorkingDays;
     private int maxWorkingHours;
     private int totalWage;
+    private List<Integer> dailyWages;
 
     public CompanyEmpWage(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
         this.companyName = companyName;
@@ -16,6 +17,7 @@ class CompanyEmpWage {
         this.maxWorkingDays = maxWorkingDays;
         this.maxWorkingHours = maxWorkingHours;
         this.totalWage = 0;
+        this.dailyWages = new ArrayList<>();
     }
 
     // Getters and setters for company-specific information
@@ -43,6 +45,16 @@ class CompanyEmpWage {
     // Getter for total wage
     public int getTotalWage() {
         return totalWage;
+    }
+
+    // Getter for daily wages
+    public List<Integer> getDailyWages() {
+        return dailyWages;
+    }
+
+    // Method to add daily wage
+    public void addDailyWage(int dailyWage) {
+        dailyWages.add(dailyWage);
     }
 }
 
@@ -103,12 +115,14 @@ public class EmployeeWageCalculation1 {
 
                 totalWorkingHours += empHours;
                 int dailyWage = calculateDailyWage(empHours, currentCompany.getWagePerHour());
+                currentCompany.addDailyWage(dailyWage); // Store daily wage
                 currentCompany.setTotalWage(currentCompany.getTotalWage() + dailyWage);
 
                 System.out.println("Daily Wage for " + currentCompany.getCompanyName() + "= " + dailyWage);
             }
 
             System.out.println("Total Wage for " + currentCompany.getCompanyName() + "= " + currentCompany.getTotalWage());
+            System.out.println("Daily Wages for " + currentCompany.getCompanyName() + "= " + currentCompany.getDailyWages());
         }
     }
 
@@ -124,6 +138,7 @@ public class EmployeeWageCalculation1 {
         empWageBuilder.calculateEmployeeWage();
     }
 }
+
 
 
 
