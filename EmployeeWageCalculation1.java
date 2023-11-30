@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 // Class to encapsulate company-specific information
@@ -53,24 +55,17 @@ public class EmployeeWageCalculation1 {
     public static final int FULL_DAY_HOURS = 8;
     public static final int PART_TIME_HOURS = 4;
 
-    // Array to store CompanyEmpWage objects
-    private CompanyEmpWage[] companyEmpWages;
-    private int numOfCompanies;
+    // List to store CompanyEmpWage objects
+    private List<CompanyEmpWage> companyEmpWages;
 
-    // Constructor to initialize array
+    // Constructor to initialize list
     public EmpWageBuilder() {
-        companyEmpWages = new CompanyEmpWage[5]; // Assuming a maximum of 5 companies
-        numOfCompanies = 0;
+        companyEmpWages = new ArrayList<>();
     }
 
     // Method to add a new company
     public void addCompany(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
-        if (numOfCompanies < companyEmpWages.length) {
-            companyEmpWages[numOfCompanies] = new CompanyEmpWage(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
-            numOfCompanies++;
-        } else {
-            System.out.println("Cannot add more companies. Array full.");
-        }
+        companyEmpWages.add(new CompanyEmpWage(companyName, wagePerHour, maxWorkingDays, maxWorkingHours));
     }
 
     // Method for checking attendance
@@ -86,9 +81,7 @@ public class EmployeeWageCalculation1 {
 
     // Method for calculating employee wage for all companies
     public void calculateEmployeeWage() {
-        for (int i = 0; i < numOfCompanies; i++) {
-            CompanyEmpWage currentCompany = companyEmpWages[i];
-
+        for (CompanyEmpWage currentCompany : companyEmpWages) {
             int totalWorkingHours = 0;
             int totalWorkingDays = 0;
 
@@ -131,5 +124,6 @@ public class EmployeeWageCalculation1 {
         empWageBuilder.calculateEmployeeWage();
     }
 }
+
 
 
