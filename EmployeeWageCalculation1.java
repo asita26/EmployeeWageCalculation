@@ -18,17 +18,19 @@ public class EmployeeWageCalculation1 {
     }
     
     //Method for UC2 & UC3 : Calculating Wage for Employees
-    public static int calculateDailyWage(int empHours) {
+    public static int calculateDailyWage(int empHours, int wagePerHour) {
         return empHours * WAGE_PER_HOUR;
     }
 
     //Method for UC5 & UC5 : Calculating Wage for Employees for a month and for total working hours
-    public static void calculateEmployeeWage() {
+    public static void calculateEmployeeWage(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours)
+    {
         int totalWorkingHours = 0;
         int totalWorkingDays = 0;
         int totalWage = 0;
 
-        while (totalWorkingDays < MAX_WORKING_DAYS && totalWorkingHours <= MAX_WORKING_HOURS) {
+        while (totalWorkingDays < maxWorkingDays  && totalWorkingHours <=  maxWorkingHours) 
+        {
             totalWorkingDays++;
             int empCheck = checkingAttendance();
             int empHours;
@@ -45,18 +47,21 @@ public class EmployeeWageCalculation1 {
             }
 
             totalWorkingHours += empHours;
-            int dailyWage = calculateDailyWage(empHours);
+            int dailyWage = calculateDailyWage(empHours, wagePerHour);
             totalWage += dailyWage;
-
-            System.out.println("Daily Wage= " + dailyWage);
+            System.out.println("Daily Wage for " + companyName + "= " + dailyWage);
+    
         }
 
-        System.out.println("Total Wage= " + totalWage);
+          System.out.println("Total Wage for " + companyName + "= " + totalWage);
+    
     }
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program");
-        calculateEmployeeWage();
+        // Example usage for two companies
+        calculateEmployeeWage("CompanyA", 20, 20, 100);
+        calculateEmployeeWage("CompanyB", 25, 25, 120);
     }
 }
 
